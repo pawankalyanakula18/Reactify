@@ -1,4 +1,47 @@
-#head1{
-    colour : red;
+.header{
+    display : flex;
+    justify-content: space-between;
+    border: 2px solid black;
 }
-    
+.logo{
+    width : 200px;
+}
+.nav_items > ul{
+    display: flex;
+    list-style-type: none;
+    padding-right: 50px;
+}
+.nav_items > ul > li{
+    border: 2px solid black;
+    padding: 15px;
+    margin: 15px;
+
+}
+.search{
+    padding: 20px;
+    border: 1px solid black;
+}
+.restr_container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.restr_card{
+    margin: 10px;
+    width: 200px;
+}
+.restr_card:hover{
+    cursor: pointer;
+    border: 1px solid black;
+}
+.restr_img{
+    padding: 5px;
+    margin: 10px;
+    height: 100px;
+    width: 80%;
+}
+.filter{
+    margin: 10px;
+}
+.filter-btn:hover{
+    cursor: pointer;
+}
