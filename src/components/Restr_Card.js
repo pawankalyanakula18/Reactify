@@ -6,7 +6,9 @@ const Restr_Card = (props) =>{
          cuisines,
          locality,
          avgRating,
-         cloudinaryImageId
+         costForTwo,
+         cloudinaryImageId,
+         sla
     } = ResData?.info;
 
 
@@ -18,6 +20,8 @@ const Restr_Card = (props) =>{
          <h4>{cuisines.join(", ")}</h4>
          <h4>{locality}</h4>
          <h4>{avgRating}</h4>
+         <h4>{costForTwo}</h4>
+         <h4>{sla.slaString}</h4>
          </div>
     )
 };
