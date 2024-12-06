@@ -7,8 +7,10 @@ import ContactUs from "./components/ContactUs";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import UserLoginContext from "./common_utils/UserLoginContext";
-
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import appStore from "./common_utils/appStore";
+import Cart from "./components/Cart";
 
 const About = lazy(() => import("./components/About"));
 
@@ -28,14 +30,14 @@ const AppInterface = () => {
      }, []);
 
      return (
-     //Default Value
+<Provider store={appStore}>
      <UserLoginContext.Provider value={{ loggedInUser: userName, setUserName }}>
-          { /* Pawan Kalyan akula */ }
           <div className="app">
                <Header/>
                <Outlet/>
           </div>
      </UserLoginContext.Provider>
+</Provider>
      );
 }; 
 
@@ -49,7 +51,11 @@ const appRouter = createBrowserRouter([
                },
                {    
                     path: "about",     
-                    element: <About/>     
+                    element:(
+                         <Suspense fallback={<div>Loading...</div>}>
+                              <About/>
+                         </Suspense>
+                    )      
                },
                {    
                     path: "contact",     
@@ -59,6 +65,10 @@ const appRouter = createBrowserRouter([
                     path: "restaurants/:resId",  
                     element: <RestaurantMenu/>    
                },
+               {    
+                    path: "cart",     
+                    element: <Cart/>      
+               },
           ],
           errorElement: <Error/>,
      },
@@ -66,6 +76,5 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render( <Suspense fallback={<div>Loading...</div>}>
-     <RouterProvider router={appRouter} />
-               </Suspense>);    
+root.render( <RouterProvider router={appRouter} />
+               );    
