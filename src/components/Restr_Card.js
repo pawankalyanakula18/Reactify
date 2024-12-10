@@ -5,6 +5,7 @@ import { useContext } from "react";
 const Restr_Card = (props) =>{
     const { ResData } = props;
      const { loggedInUser } = useContext(UserLoginContext);
+     console.log(ResData);
 
     const {
          name,
@@ -18,7 +19,9 @@ const Restr_Card = (props) =>{
 
 
     return (
-         <div className="restr_card m-4 p-4 w-[200px] rounded-xl" style={{backgroundColor: "#f0f0f0"}}>
+         <div 
+         data-testid="ResCard"
+         className="restr_card m-4 p-4 w-[200px] rounded-xl" style={{backgroundColor: "#f0f0f0"}}>
          <img alt="Restaurant Image" className="restr_img w-[200px] h-32 rounded-2xl"
          src={CDN_URL + cloudinaryImageId}/>
          <h3 className="py-4 font-bold text-bold">{name}</h3>
